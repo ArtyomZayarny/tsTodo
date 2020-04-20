@@ -21,6 +21,7 @@ export const TodoForm:React.FC<TodoFormProps> = (props) => {
   const handleBlur = () =>{
     setError('')
   }
+ 
     return (
           <div className="input-field">
             <input 

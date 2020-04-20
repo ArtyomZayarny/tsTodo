@@ -16,6 +16,7 @@ const removeHandler = (event:React.MouseEvent,id:number) => {
 
     return (
         <>
+        {todos.length === 0 ? <p>Todo list is empty</p> : ''}
             <ul>
                 {todos.map( todo => {
                         const classes = ['todo'];
@@ -26,6 +27,7 @@ const removeHandler = (event:React.MouseEvent,id:number) => {
                         <li className={classes.join(' ')} key={todo.id}>
                         <label >
                             <input type="checkbox"
+                            checked={todo.completed ? true : false}
                                 onChange={() => {onToggle(todo.id)}}
                             />
                             <span>{todo.title}</span>

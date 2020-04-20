@@ -1,10 +1,19 @@
-import React, {useState} from  'react'
+import React, {useState, useEffect} from  'react'
 import { TodoForm } from '../components/TodoForm';
 import {ITodo} from '../components/interfaces';
 import { TodoList } from '../components/TodoList';
 
 export const TodoPage:React.FC = () => {
     const [todos,setTodos] = useState<ITodo[]>([]);
+
+    useEffect( () => {
+        const savedTodo = JSON.parse(localStorage.getItem('todos') || '[]');
+       setTodos(savedTodo) 
+        
+    },[]);
+    useEffect( () => {
+        localStorage.setItem('todos', JSON.stringify(todos))   
+    },[todos]);
 
     const addHandler = (title:string) => {
       const newTodo:ITodo = {
